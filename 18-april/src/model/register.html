@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="from.css" />
+    <style>
+        /* Styling for the addContainer */
+        .addContainer {
+            display: none; /* Initially hide the addContainer */
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .close-btn {
+            cursor: pointer;
+            float: right;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <button class="btn btn-add" onclick="toggleAddContainer()">Add</button>
+        <!-- <div class="addContainer">
+            <form action="http://localhost:999/users" method="post">
+                    <div class="close-btn"> ✖️</div>
+
+            
+                    <input type="text" id="username" name="username" placeholder="Username" />
+                    <input type="email" id="email" name="email" placeholder="Email" />
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        placeholder="Password"
+                    />
+                    <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        placeholder="First Name"
+                    />
+                    <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        placeholder="Last Name"
+                    />
+                    <input type="number" id="age" name="age" placeholder="Age" />
+
+                    <button className="btn">Submit</button>
+            </form>
+        </div> -->
+        <!-- /*<div className="tableContainer">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {dataList[0] ? (
+                dataList.map((ele) => {
+                  return (
+                    <tr>
+                      <td>{ele.name}</td>
+                      <td>{ele.email}</td>
+                      <td>{ele.mobile}</td>
+                      <td>
+                        <button
+                          className="btn-edit"
+                          onClick={() => handelEdit(ele)}
+                        >
+                          ✏️
+                        </button>
+
+                        <button
+                          className="btn btn-delete"
+                          onClick={() => handelDelete(ele._id)}
+                        >
+                          {<MdDelete />}
+                        </button>
+                      </td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <p>NO DATA</p>
+              )}
+            </tbody>
+          </table>
+        </div> -->
+      </div>
+
+      <script>
+        function toggleAddContainer() {
+            var container = document.querySelector('.container');
+            var addContainer = container.querySelector('.addContainer');
+
+            if (!addContainer) {
+                // Create addContainer if it doesn't exist
+                addContainer = document.createElement('div');
+                addContainer.classList.add('addContainer');
+                addContainer.innerHTML = `
+                    <div class="close-btn" onclick="toggleAddContainer()">✖️</div>
+                    <form id="userForm" action="http://localhost:999/users" method="post" onsubmit="return submitForm()">
+                        <input type="text" id="username" name="username" placeholder="Username" />
+                        <input type="email" id="email" name="email" placeholder="Email"  />
+                        <input type="password" id="password" name="password" placeholder="Password"  />
+                        <input type="text" id="firstName" name="firstName" placeholder="First Name"  />
+                        <input type="text" id="lastName" name="lastName" placeholder="Last Name"  />
+                        <input type="number" id="age" name="age" placeholder="Age"  />
+                        <button type="submit" class="btn">Submit</button>
+                    </form>
+                `;
+                container.appendChild(addContainer); // Append addContainer to the container
+            }
+
+            // Toggle the visibility of addContainer
+            addContainer.style.display = (addContainer.style.display === 'none' || !addContainer.style.display) ? 'block' : 'none';
+        }
+
+        function submitForm() {
+            // Here you can add additional logic for form validation before submission
+            // For now, just hide the addContainer after form submission
+            var addContainer = document.querySelector('.addContainer');
+            if (addContainer) {
+                addContainer.style.display = 'none'; // Hide addContainer after form submission
+            }
+            return true; // Return true to allow form submission
+        }
+    </script>
+</body>
+</html>
